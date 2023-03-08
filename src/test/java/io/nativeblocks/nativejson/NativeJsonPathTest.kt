@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 class NativeJsonPathTest {
 
     @Test
-    fun `check nested objec inside of array`() {
+    fun `check nested object inside of array`() {
         val result = NativeJsonPath().query(
             """
                 {

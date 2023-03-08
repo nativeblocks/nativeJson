@@ -3,7 +3,6 @@ package io.nativeblocks.nativejson
 import org.json.JSONArray
 import org.json.JSONObject
 
-
 class NativeJsonPath {
 
     private fun isObject(jsonString: String): Boolean {
@@ -67,6 +66,7 @@ class NativeJsonPath {
                     path = path.replaceFirst("$c", "")
                     pointers.add(Root(c.toString()))
                 }
+
                 '[' -> {
                     val bracketValue: String = path.substring(path.indexOfFirst { it == '[' } + 1,
                         path.indexOfFirst { it == ']' })
@@ -75,10 +75,12 @@ class NativeJsonPath {
                             pointers.add(Index(bracketValue.toInt()))
                             path.replaceFirst("[$bracketValue]", "")
                         }
+
                         bracketValue == ":" -> {
                             pointers.add(AllField(":"))
                             path.replaceFirst("[$bracketValue]", "")
                         }
+
                         else -> {
                             pointers.add(Field(bracketValue))
                             path.replaceFirst("[$bracketValue]", "")
